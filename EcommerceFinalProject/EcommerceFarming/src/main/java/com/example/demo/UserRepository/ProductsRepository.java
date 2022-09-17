@@ -1,0 +1,16 @@
+package com.example.demo.UserRepository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import com.example.demo.entity.Products;
+
+public interface ProductsRepository  extends JpaRepository<Products,Integer>{
+
+	
+    //@Query(value="select * from Products where productName=?1",nativeQuery = true)//(according to table udr ke column k name aaege)
+	public Products findByProductName(String productName);
+	
+	
+
+}

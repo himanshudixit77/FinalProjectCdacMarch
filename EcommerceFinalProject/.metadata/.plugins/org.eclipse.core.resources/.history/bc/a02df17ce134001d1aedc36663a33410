@@ -1,0 +1,18 @@
+package com.example.demo.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.UserService.AddressService;
+
+@RestController
+public class AddressController {
+
+	@Autowired
+	private AddressService addService;
+	
+	public Address registerAddress(@RequestBody Address add) {
+		return addService.addAddress(add);
+	}
+}

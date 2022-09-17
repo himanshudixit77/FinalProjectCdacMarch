@@ -1,0 +1,16 @@
+package com.example.demo.Controller;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.dto.AddressDto;
+
+@RestController
+public class AddressController {
+	
+	public Address add(@RequestBody AddressDto aDto) {
+		return 
+	}
+	
+
+}

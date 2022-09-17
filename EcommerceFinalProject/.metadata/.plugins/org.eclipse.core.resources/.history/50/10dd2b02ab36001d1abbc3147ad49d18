@@ -1,0 +1,81 @@
+package com.example.demo.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.example.demo.UserRepository.CartProductRepository;
+import com.example.demo.UserRepository.CartRepository;
+import com.example.demo.UserRepository.ProductsRepository;
+import com.example.demo.UserRepository.UserRepository;
+import com.example.demo.dto.CartDto;
+import com.example.demo.entity.Cart;
+import com.example.demo.entity.CartProduct;
+import com.example.demo.entity.Products;
+import com.example.demo.entity.User;
+
+@Service
+/*public class CartService {
+
+	@Autowired
+	private CartRepository cRepository;
+	@Autowired
+	private UserRepository userRepository;;
+
+	@Autowired
+	private ProductsRepository productsRepository;
+
+	@Autowired
+	private CartProductRepository cartProductRepository;
+
+	public Cart addCart(@RequestBody CartDto cartDto) {
+		User user = userRepository.getById(cartDto.getUserId());
+		if (user != null) {
+			Cart cart = user.getCart();
+			if (cart == null) {
+				cart = new Cart();
+				cart.setUser(user);
+			}
+			Products products = productsRepository.findById(cartDto.getProductId()).get();
+			List<CartProduct> cartproductList = cart.getCartProducts();
+			if (cartproductList == null) {
+				cartproductList = new ArrayList<>();
+			}
+			CartProduct cp = null;
+			List<CartProduct> alreadyCartProducts = cartproductList.stream()
+					.filter((cartProduct) -> cartProduct.getProducts().equals(products)).collect(Collectors.toList());
+			if (alreadyCartProducts != null && alreadyCartProducts.size() > 0) {
+				cp = alreadyCartProducts.get(0);
+				int index = cartproductList.indexOf(cp);
+				cp = cartproductList.get(index);
+				cp.setQuantity(cp.getQuantity() + 1);
+				cp.setAmount(cp.getQuantity() * products.getProductPrce());
+				cartProductRepository.save(cp);
+			} else {
+				cp = new CartProduct();
+				cp.setCart(cart);
+				cp.setProducts(products);
+				cp.setQuantity(1);
+				cp.setAmount(products.getProductPrce());
+				cartProductRepository.save(cp);
+				cartproductList.add(cp);
+			}
+			double totalAmount = 0.0;
+			for (CartProduct cProduct : cartproductList) {
+				totalAmount += cProduct.getAmount();
+			}
+			cart.setTotalAmount(totalAmount);
+			cart.setCartProducts(cartproductList);
+			cart = cRepository.save(cart);
+			user.setCart(cart);
+			userRepository.save(user);
+			return cart;
+		}
+		return null;
+	}
+}
+*/

@@ -1,0 +1,32 @@
+package com.example.demo.entity;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity
+public class CartProduct {
+
+	private int cartproductId;
+	private int quantity;
+	private double amount;
+	
+	@ManyToOne()
+	@JoinColumn(name="cartId")
+	@JsonBackReference
+	private Cart cart;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Products products;
+	
+	@ManyToOne
+	@JoinColumn(name="orderId")
+	private MyOrder order;
+	
+	
+}

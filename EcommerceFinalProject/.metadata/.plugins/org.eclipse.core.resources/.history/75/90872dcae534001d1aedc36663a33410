@@ -1,0 +1,23 @@
+package com.example.demo.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.UserService.AddressService;
+import com.example.demo.entity.Address;
+
+@RestController
+@RequestMapping("/User")
+public class AddressController {
+
+	@Autowired
+	private AddressService addService;
+	
+	@PostMapping("/add")
+	public Address registerAddress(@RequestBody Address add) {
+		return addService.addAddress(add);
+	}
+}

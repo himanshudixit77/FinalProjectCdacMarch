@@ -1,0 +1,10 @@
+package com.example.demo.UserService;
+
+import com.example.demo.entity.User;
+
+public interface UserServiceInterface {
+	
+	public User addUser(User user);
+	public User login(String email, String password);
+	
+}

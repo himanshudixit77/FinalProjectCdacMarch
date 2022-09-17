@@ -1,0 +1,46 @@
+package com.example.demo.entity;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Products {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer productId;
+	
+	private String productName;
+	private int productQuantity;
+	private String productDescription;
+	private String imagePath;
+	
+	private double productPrce;
+	
+	/*@ManyToOne
+	@JoinColumn(name="user_id")
+	@JsonBackReference
+	private User userpro;*/
+	
+	private Date date;
+	
+	@ManyToOne
+	@JoinColumn(name="categoryId")
+	@JsonBackReference
+	private Category category;
+
+}

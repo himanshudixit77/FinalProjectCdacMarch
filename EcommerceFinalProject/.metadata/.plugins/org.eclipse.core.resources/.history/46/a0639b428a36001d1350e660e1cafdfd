@@ -1,0 +1,43 @@
+ package com.example.demo.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name="Address_Info")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Address {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int addressId;
+
+	private String streetNo;
+	private String city;
+	private String state;
+	private String country;
+	private long pincode;
+	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	
+
+	
+	
+}

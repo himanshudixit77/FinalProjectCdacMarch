@@ -1,0 +1,30 @@
+package com.example.demo.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.UserRepository.AddressRepository;
+import com.example.demo.dto.AddressDto;
+import com.example.demo.entity.Address;
+import com.example.demo.entity.User;
+
+@Service
+public class AddressService {
+
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private AddressRepository addressRepository;
+	
+	public Address addAddress(AddressDto aDto) {
+		
+		Address address=new Address();
+		address.setUser(userService.findById(aDto.getUserId();
+		address.setCity(aDto.getCity());
+		address.setCountry(aDto.getCountry());
+		address.setPincode(aDto.getPincode());
+		address.setState(aDto.getState());
+		address.setStreetNo(aDto.getStreetNo());
+		addressRepository.save(address);
+}
+}

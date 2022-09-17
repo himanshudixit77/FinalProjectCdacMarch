@@ -1,0 +1,55 @@
+package com.example.demo.UserService;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.example.demo.UserRepository.ProductsRepository;
+import com.example.demo.dto.ProductDto;
+import com.example.demo.entity.Products;
+
+@Service
+public class ProductsService {
+	
+	@Autowired
+	private ProductsRepository prepo;
+	
+	public Products addProduct(ProductDto product) {
+		//Products pro=prepo.findById(product.getProductId());
+		return prepo.save(product);
+	}
+
+	public List<Products> getAllPro() {
+		
+		
+		return prepo.findAll();
+	}
+
+
+	public Products fetchProductsById(int id) {
+		
+		Optional<Products> pro=prepo.findById(id);
+		
+		return pro.get();
+	}
+
+	public void deleteProductsById(Integer productId) {
+
+		prepo.deleteById(productId);
+	}
+
+
+
+	public Products getProductsByName(String productName) {
+		
+		return prepo.findByProductName(productName);
+	}
+}
+ 
+
+
+
+

@@ -1,0 +1,43 @@
+package com.example.demo.Controller;
+
+import java.util.Date;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.UserService.UserService;
+import com.example.demo.dto.LoginDto;
+import com.example.demo.entity.User;
+
+@RestController
+@RequestMapping("/User")
+public class UserController {
+	
+	@Autowired
+	private UserService userv;
+	
+	@PostMapping("/add")
+	public User addUser(@Valid @RequestBody User user) {
+		//System.out.println(user.getAddress());
+	user.setRegisdate(new Date());
+	return userv.addUser(user);
+
+}
+	
+	@PostMapping("/login")
+	public User login(@RequestBody LoginDto lDto) {
+		 return userv.login(lDto.getEmail(), lDto.getPassword());
+	}
+/*@requestbody user , 
+ * 2-String email string password,
+ * 3-@requestbody logindto * will work*/
+ 
+}

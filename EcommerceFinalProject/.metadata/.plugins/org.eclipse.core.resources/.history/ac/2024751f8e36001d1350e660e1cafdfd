@@ -1,0 +1,8 @@
+package com.example.demo.UserRepository;
+
+import org.springframework.stereotype.Repository;
+
+@Repositoryo
+public class CartRepository {
+
+}
